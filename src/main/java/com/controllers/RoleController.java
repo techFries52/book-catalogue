@@ -31,6 +31,7 @@ public class RoleController {
         appUserService.addRoleToUser(form.getUsername(), form.getRoleName());
         return ResponseEntity.ok().build();
     }
+
 }
 
 @Data
