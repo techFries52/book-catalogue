@@ -8,9 +8,9 @@ import java.util.List;
 public interface AppUserService {
 
     AppUser saveAppUser(AppUser appUser);
-    Role saveRole (Role role);
     void addRoleToUser(String username, String roleName);
     AppUser getAppUser(String username);
-    AppUser getAppUserByUserName(String name);
+    AppUser getAppUserByName(String name);
     List<AppUser> getUsers();
+    boolean ifUserExists(AppUser appUser);
 }
