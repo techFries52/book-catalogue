@@ -11,7 +11,7 @@ import java.util.Collection;
 @Entity @Data @AllArgsConstructor @NoArgsConstructor
 public class Book {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String title;
     private String author;
     @ManyToMany(fetch = FetchType.EAGER)
