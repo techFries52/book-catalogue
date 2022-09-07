@@ -2,6 +2,7 @@ package com.security;
 
 import com.exceptions.CustomAccessDeniedHandler;
 import com.filters.CustomAuthenticationFilter;
+import com.filters.CustomAuthorizationFilter;
 import com.util.TokenWriter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
@@ -58,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .accessDeniedHandler(accessDeniedHandler);
-        
+
         http.authorizeRequests()
                 .antMatchers(POST, "/users/save")
                 .hasAnyAuthority("ROLE_ADMIN")
@@ -71,6 +73,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated();
 
         http.addFilter(customAuthenticationFilter);
+        http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+
     }
 
     @Bean
