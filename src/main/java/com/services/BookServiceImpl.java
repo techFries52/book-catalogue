@@ -27,6 +27,7 @@ public class BookServiceImpl implements BookService {
         Book book = bookRepo.findByTitle(bookTitle);
         Genre genre = genreRepo.findByName(genreName);
         book.getGenres().add(genre);
+        bookRepo.save(book);
     }
 
     @Override
