@@ -40,6 +40,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
         AppUser appUser = appUserRepo.findByUsername(username);
         Role role = roleRepo.findByName(roleName);
         appUser.getRoles().add(role);
+        appUserRepo.save(appUser);
     }
 
     @Override
