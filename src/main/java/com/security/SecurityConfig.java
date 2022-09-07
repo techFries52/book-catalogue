@@ -1,12 +1,12 @@
 package com.security;
 
+import com.exceptions.CustomAccessDeniedHandler;
 import com.filters.CustomAuthenticationFilter;
 import com.util.TokenWriter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
 
     private final TokenWriter tokenWriter;
+    private final CustomAccessDeniedHandler accessDeniedHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -46,11 +47,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers(GET, "/users/**")
-                .hasAnyAuthority("ROLE_USER");
+                .hasAnyAuthority("ROLE_USER")
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler);
 
         http.authorizeRequests()
+                .antMatchers(POST, "/book/save/**")
+                .hasAnyAuthority("ROLE_USER")
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler);
+        
+        http.authorizeRequests()
                 .antMatchers(POST, "/users/save")
-                .hasAnyAuthority("ROLE_ADMIN");
+                .hasAnyAuthority("ROLE_ADMIN")
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler);;
 
         http.authorizeRequests()
                 .anyRequest()
