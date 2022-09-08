@@ -143,7 +143,7 @@ public class BookCatalogueApplication {
 			bookService.addGenreToBook("Fantasy", "The Silent Blade");
 			bookService.saveBook(new Book(null, "The Spine of the World", "R. A. Salvatore", new ArrayList<>(), true, "Paths of Darkness"));
 			bookService.addGenreToBook("Fantasy", "The Spine of the World");
-			bookService.saveBook(new Book(null, "Servant of the Shard", "R. A. Salvatore", new ArrayList<>(), true, "Paths of Darkness"));
+			bookService.saveBook(new Book(null, "Servant of the Shard", "R. A. Salvatore", new ArrayList<>(), true, "Paths of Darkness, The Sellswords"));
 			bookService.addGenreToBook("Fantasy", "Servant of the Shard");
 			bookService.saveBook(new Book(null, "Sea of Swords", "R. A. Salvatore", new ArrayList<>(), true, "Paths of Darkness"));
 			bookService.addGenreToBook("Fantasy", "Sea of Swords");
@@ -163,6 +163,38 @@ public class BookCatalogueApplication {
 			bookService.addGenreToBook("Fantasy", "The Lone Drow");
 			bookService.saveBook(new Book(null, "The Two Swords", "R. A. Salvatore", new ArrayList<>(), true, "The Hunter's Blades Trilogy"));
 			bookService.addGenreToBook("Fantasy", "The Two Swords");
+
+			bookService.saveBook(new Book(null, "Canticle", "R. A. Salvatore", new ArrayList<>(), true, "The Cleric Quintet"));
+			bookService.addGenreToBook("Fantasy", "Canticle");
+			bookService.saveBook(new Book(null, "In Sylvan Shadows", "R. A. Salvatore", new ArrayList<>(), true, "The Cleric Quintet"));
+			bookService.addGenreToBook("Fantasy", "In Sylvan Shadows");
+			bookService.saveBook(new Book(null, "Night Masks", "R. A. Salvatore", new ArrayList<>(), true, "The Cleric Quintet"));
+			bookService.addGenreToBook("Fantasy", "Night Masks");
+			bookService.saveBook(new Book(null, "The Fallen Fortress", "R. A. Salvatore", new ArrayList<>(), true, "The Cleric Quintet"));
+			bookService.addGenreToBook("Fantasy", "The Fallen Fortress");
+			bookService.saveBook(new Book(null, "The Chaos Curse", "R. A. Salvatore", new ArrayList<>(), true, "The Cleric Quintet"));
+			bookService.addGenreToBook("Fantasy", "The Chaos Curse");
+
+			bookService.saveBook(new Book(null, "Gauntlgrym", "R. A. Salvatore", new ArrayList<>(), true, "Neverwinter Saga"));
+			bookService.addGenreToBook("Fantasy", "Gauntlgrym");
+			bookService.saveBook(new Book(null, "Neverwinter", "R. A. Salvatore", new ArrayList<>(), true, "Neverwinter Saga"));
+			bookService.addGenreToBook("Fantasy", "Neverwinter");
+			bookService.saveBook(new Book(null, "Charon's Claw", "R. A. Salvatore", new ArrayList<>(), true, "Neverwinter Saga"));
+			bookService.addGenreToBook("Fantasy", "Charon's Claw");
+			bookService.saveBook(new Book(null, "The Last Threshold", "R. A. Salvatore", new ArrayList<>(), true, "Neverwinter Saga"));
+			bookService.addGenreToBook("Fantasy", "The Last Threshold");
+
+			bookService.saveBook(new Book(null, "Promise of the Witch-King", "R. A. Salvatore", new ArrayList<>(), true, "The Sellswords"));
+			bookService.addGenreToBook("Fantasy", "Promise of the Witch-King");
+			bookService.saveBook(new Book(null, "Road of the Patriarch", "R. A. Salvatore", new ArrayList<>(), true, "The Sellswords"));
+			bookService.addGenreToBook("Fantasy", "Road of the Patriarch");
+
+			bookService.saveBook(new Book(null, "The Hundred Thousand Kingdoms", "N. K. Jemisin", new ArrayList<>(), true, "The Inheritance Trilogy"));
+			bookService.addGenreToBook("Fantasy", "The Hundred Thousand Kingdoms");
+			bookService.saveBook(new Book(null, "The Broken Kingdoms", "N. K. Jemisin", new ArrayList<>(), true, "The Inheritance Trilogy"));
+			bookService.addGenreToBook("Fantasy", "The Broken Kingdoms");
+			bookService.saveBook(new Book(null, "The Kingdom of Gods", "N. K. Jemisin", new ArrayList<>(), false, "The Inheritance Trilogy"));
+			bookService.addGenreToBook("Fantasy", "The Kingdom of Gods");
 		};
 	}
 }
