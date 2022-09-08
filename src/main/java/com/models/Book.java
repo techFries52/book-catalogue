@@ -17,4 +17,5 @@ public class Book {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Genre> genres = new ArrayList<>();
     private boolean haveRead;
+    private String series;
 }
