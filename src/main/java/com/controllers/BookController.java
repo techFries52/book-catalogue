@@ -11,9 +11,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController @RequiredArgsConstructor @Slf4j
+@RestController @Slf4j
 @RequestMapping("/book")
 public class BookController {
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     private final BookService bookService;
 

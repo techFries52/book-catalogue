@@ -15,9 +15,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
-@RestController @RequiredArgsConstructor @Slf4j
+@RestController @Slf4j
 @RequestMapping("/genre")
 public class GenreController {
+
+    public GenreController(GenreService genreService, BookService bookService) {
+        this.genreService = genreService;
+        this.bookService = bookService;
+    }
 
     private final GenreService genreService;
     private final BookService bookService;

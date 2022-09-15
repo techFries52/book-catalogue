@@ -6,8 +6,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-@Service @RequiredArgsConstructor @Slf4j
+@Service @Slf4j
 public class RoleServiceImpl implements RoleService{
+
+    public RoleServiceImpl(RoleRepo roleRepo) {
+        this.roleRepo = roleRepo;
+    }
 
     private final RoleRepo roleRepo;
 

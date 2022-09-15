@@ -20,8 +20,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Service @RequiredArgsConstructor @Slf4j
+@Service @Slf4j
 public class AppUserServiceImpl implements AppUserService, UserDetailsService {
+
+    public AppUserServiceImpl(AppUserRepo appUserRepo, RoleRepo roleRepo, PasswordEncoder passwordEncoder) {
+        this.appUserRepo = appUserRepo;
+        this.roleRepo = roleRepo;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     private final AppUserRepo appUserRepo;
     private final RoleRepo roleRepo;

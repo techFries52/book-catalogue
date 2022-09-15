@@ -10,8 +10,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service @Slf4j @RequiredArgsConstructor
+@Service @Slf4j
 public class BookServiceImpl implements BookService {
+
+    public BookServiceImpl(BookRepo bookRepo, GenreRepo genreRepo) {
+        this.bookRepo = bookRepo;
+        this.genreRepo = genreRepo;
+    }
 
     private final BookRepo bookRepo;
     private final GenreRepo genreRepo;

@@ -27,9 +27,14 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@RestController @RequiredArgsConstructor @Slf4j
+@RestController @Slf4j
 @RequestMapping("users")
 public class AppUserController {
+
+    public AppUserController(AppUserService appUserService, TokenWriter tokenWriter) {
+        this.appUserService = appUserService;
+        this.tokenWriter = tokenWriter;
+    }
 
     private final AppUserService appUserService;
     private final TokenWriter tokenWriter;

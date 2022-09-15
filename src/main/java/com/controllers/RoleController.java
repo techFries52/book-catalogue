@@ -12,9 +12,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
-@RestController @RequiredArgsConstructor @Slf4j
+@RestController @Slf4j
 @RequestMapping("/role")
 public class RoleController {
+
+    public RoleController(RoleService roleService, AppUserService appUserService) {
+        this.roleService = roleService;
+        this.appUserService = appUserService;
+    }
 
     private final RoleService roleService;
     private final AppUserService appUserService;
