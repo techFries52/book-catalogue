@@ -46,4 +46,16 @@ public class BookServiceImpl implements BookService {
         log.info("fetching all books");
         return bookRepo.findAll();
     }
+
+    @Override
+    public void deleteBook(Book book) {
+        log.info("deleting book: {}", book.getTitle());
+        bookRepo.delete(book);
+    }
+
+    @Override
+    public Book getBookById(Long id) {
+        log.info("fetching book by id: {}", id);
+        return bookRepo.getReferenceById(id);
+    }
 }

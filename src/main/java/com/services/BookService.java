@@ -10,4 +10,6 @@ public interface BookService {
     void addGenreToBook(String genreName, String bookTitle);
     Book getBook(String title);
     List<Book> getAllBooks();
+    void deleteBook(Book book);
+    Book getBookById(Long id);
 }
