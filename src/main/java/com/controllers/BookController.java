@@ -4,6 +4,7 @@ import com.models.Book;
 import com.services.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -33,13 +34,16 @@ public class BookController {
     public ResponseEntity<List<Book>> getBooks() {return ResponseEntity.ok().body(bookService.getAllBooks());}
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteBook(@PathVariable("id") Long id){
-        ResponseEntity<String> re = null;
+    public ResponseEntity<Book> deleteBook(@PathVariable("id") Long id){
         Book book = bookService.getBookById(id);
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/book/"+id).toUriString());
         bookService.deleteBook(book);
-        return ResponseEntity.created(uri).build();
+        return new ResponseEntity<Book>(book, HttpStatus.OK);
+    }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Book> updateBook(@PathVariable("id") Long id){
+        Book book = bookService.getBookById(id);
+        return new ResponseEntity<Book>(bookService.updateBook(book), HttpStatus.ACCEPTED);
     }
 
 }

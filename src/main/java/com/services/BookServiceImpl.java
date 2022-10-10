@@ -58,4 +58,10 @@ public class BookServiceImpl implements BookService {
         log.info("fetching book by id: {}", id);
         return bookRepo.getReferenceById(id);
     }
+
+    @Override
+    public Book updateBook(Book book) {
+        log.info("updating book: {}", book.getTitle());
+        return bookRepo.save(book);
+    }
 }
