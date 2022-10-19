@@ -29,6 +29,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController @Slf4j
 @RequestMapping("users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AppUserController {
 
     public AppUserController(AppUserService appUserService, TokenWriter tokenWriter) {

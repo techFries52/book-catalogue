@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController @Slf4j
 @RequestMapping("/book")
+@CrossOrigin(origins = "http://localhost:4200")
 public class BookController {
 
     public BookController(BookService bookService) {

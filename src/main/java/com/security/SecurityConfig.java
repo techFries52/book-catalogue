@@ -17,12 +17,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
-@Configuration @EnableWebSecurity @RequiredArgsConstructor @Slf4j
+@Configuration @EnableWebSecurity @RequiredArgsConstructor
+//@RequiredArgsConstructor
+@Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
@@ -35,16 +41,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
     }
 
+//    public SecurityConfig(){
+//        super(true);
+//    }
+
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean(), tokenWriter);
         customAuthenticationFilter.setFilterProcessesUrl("/api/login");
 
+        http.cors().configurationSource(request -> {
+            CorsConfiguration configuration = new CorsConfiguration();
+            configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","http://localhost:3000"));
+            configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+            configuration.setAllowedHeaders(Arrays.asList("*","list"));
+            configuration.setAllowCredentials(true);
+            return configuration;
+        });
+
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
 
         http.authorizeRequests()
-                .antMatchers("/api/login/**", "/users/token/refresh/**")
+                .antMatchers("/api/login/**", "/users/token/refresh/**", "/book/**")
                 .permitAll();
 
         http.authorizeRequests()

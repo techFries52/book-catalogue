@@ -18,4 +18,5 @@ public class Book {
     private Collection<Genre> genres = new ArrayList<>();
     private boolean haveRead;
     private String series;
+    private String picUrl;
 }

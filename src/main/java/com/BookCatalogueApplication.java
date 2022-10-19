@@ -4,6 +4,7 @@ import com.models.AppUser;
 import com.models.Book;
 import com.models.Genre;
 import com.models.Role;
+import com.security.SecurityConfig;
 import com.services.AppUserService;
 import com.services.BookService;
 import com.services.GenreService;
@@ -98,7 +99,7 @@ public class BookCatalogueApplication {
 //			bookService.addGenreToBook("Fantasy", "Oathbringer");
 //
 //			bookService.saveBook(new Book(null, "The Wolf of the North", "Duncan M.Hamilton", new ArrayList<>(), true, "The Wolf of the North Trilogy"));
-//			bookService.addGenreToBook("Fantasy", "The Wolf ofthe North");
+//			bookService.addGenreToBook("Fantasy", "The Wolf of the North");
 //			bookService.saveBook(new Book(null, "Jorundyr's Path", "Duncan M.Hamilton", new ArrayList<>(), true, "The Wolf of the North Trilogy"));
 //			bookService.addGenreToBook("Fantasy", "Jorundyr's Path");
 //			bookService.saveBook(new Book(null, "The Blood Debt", "Duncan M.Hamilton", new ArrayList<>(), true, "The Wolf of the North Trilogy"));
