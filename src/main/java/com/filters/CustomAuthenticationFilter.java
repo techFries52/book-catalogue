@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -48,10 +49,13 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         String access_token = tokenWriter.createAccessToken(request, algorithm, user);
         String refresh_token = tokenWriter.createRefreshToken(request, algorithm, user);
 
+        Cookie cookie = new Cookie("refresh_token", refresh_token);
         Map<String, String> tokens = new HashMap<>();
         tokens.put("access_token", access_token);
         tokens.put("refresh_token", refresh_token);
         response.setContentType(APPLICATION_JSON_VALUE);
+        response.addCookie(cookie);
+        response.addHeader("Access-Control-Allow-Credentials", "true");
         new ObjectMapper().writeValue(response.getOutputStream(), tokens);
     }
 
