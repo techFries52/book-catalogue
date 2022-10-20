@@ -19,4 +19,5 @@ public class Book {
     private boolean haveRead;
     private String series;
     private String picUrl;
+    private String description;
 }
